@@ -1,0 +1,248 @@
+:root {
+    --verydarkgrayishblue: hsl(217, 19%, 35%);
+    --desaturateddarkblue: hsl(214, 17%, 51%);
+    --grayishblue: hsl(212, 23%, 69%);
+    --lightgrayishblue: hsl(210, 46%, 95%);
+    --mmanrope: 'Manrope', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: grid;
+    align-content: center;
+    gap: 10px;
+    font-family: var(--mmanrope);
+    color: var(--verydarkgrayishblue);
+    background-color: var(--lightgrayishblue);
+}
+
+.article_card {
+    display: grid;
+    grid-template-rows: 12.6rem;
+    gap: 2em;
+    max-width: min(88%, 400px);
+    min-width: 250px;
+    margin: auto;
+    background-color: white;
+    border-radius: 0.65em;
+    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2)
+}
+
+.article_card .image {
+    background-image: url(images/drawers.jpg);
+    background-size: cover;
+    background-position: 0 30%;
+    overflow: hidden;
+    border-radius: 0.65em 0.65em 0 0;
+}
+
+.article_card .text {
+    line-height: 1.5;
+    padding: 0 2em;
+}
+
+.article_card .text h1 {
+    font-size: 1rem;
+    margin-bottom: 0.85em;
+}
+
+.article_card .text p {
+    font-size: 0.83rem;
+    font-weight: 600;
+    color: var(--desaturateddarkblue);
+}
+
+.article_card footer {
+    position: relative;
+}
+
+.autor {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    align-items: center;
+    gap: 1em;
+    padding: 0 2em;
+    margin-bottom: 1.2em;
+}
+
+.autor .avatar {
+    width: 41px;
+    height: 41px;
+    border-radius: 50%;
+}
+
+.autor .name_date {
+    display: grid;
+    gap: 0.15em;
+}
+
+.autor .name {
+    font-size: 0.8rem;
+}
+
+.autor .date {
+    font-size: 0.8rem;
+    color: var(--grayishblue)
+}
+
+.share_icon {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    justify-self: flex-end;
+    width: 31px;
+    height: 31px;
+    background-color: var(--lightgrayishblue);
+    color: var(--desaturateddarkblue);
+    border-radius: 50%;
+}
+
+.autor .share_icon:hover {
+    background-color: var(--desaturateddarkblue);
+    cursor: pointer;
+}
+
+.autor .share_icon:hover svg {
+    color: #fff;
+}
+
+.social_media {
+    display: none;
+    grid-template-columns: 1fr 3fr 1fr;
+    align-items: center;
+    gap: 1em;
+    max-width: 100%;
+    background-color: var(--verydarkgrayishblue);
+    padding: 1.2em 2em;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-radius: 0 0 0.65em 0.65em;
+}
+
+.social_media .share_text {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+    color: var(--grayishblue);
+}
+
+.social_media .icons {
+    display: flex;
+    align-items: center;
+    gap: 0.8em;
+}
+
+.social_media .share_icon {
+    justify-self: end;
+    color: #fff;
+    background-color: var(--desaturateddarkblue);
+}
+
+.social_media .icons svg {
+    color: #fff;
+}
+
+.social_media .icons a:hover svg {
+    color: var(--grayishblue);
+}
+
+.social_media .share_icon:hover {
+    background-color: var(--lightgrayishblue);
+    cursor: pointer;
+}
+
+.social_media .share_icon:hover svg {
+    color: var(--desaturateddarkblue);
+}
+
+.social_media.show {
+    display: grid;
+}
+
+@media screen and (min-width: 900px) {
+
+    .article_card {
+        grid-template-columns: 2fr 3fr;
+        grid-template-rows: auto;
+        grid-template-areas:
+            "img tex"
+            "img aut";
+        gap: 0;
+        max-width: 730px;
+    }
+
+    .article_card .image {
+        grid-area: img;
+        border-radius: 0.65em 0 0 0.65em;
+    }
+
+    .article_card .text {
+        grid-area: tex;
+        padding: 2em 2.5em 1.5em 2.5em;
+    }
+
+    .article_card .text h1 {
+        font-size: 1.2rem;
+        margin-bottom: 0.6em;
+    }
+
+    .autor {
+        grid-area: aut;
+        grid-template-columns: 1fr 6fr 1fr;
+        padding: 0 2.5em;
+        margin-bottom: 2em;
+    }
+
+    .autor .share_icon:hover {
+        background-color: var(--desaturateddarkblue);
+    }
+
+    .social_media {
+        display: none;
+        justify-content: center;
+        width: 240px;
+        bottom: 140%;
+        left: 61%;
+        border-radius: 0.65em;
+        padding: 1em 0;
+    }
+
+    .social_media::after {
+        content: "";
+        position: absolute;
+        border-width: 12px;
+        border-style: solid;
+        border-color: var(--verydarkgrayishblue) transparent transparent transparent;
+        top: 100%;
+        left: 43%;
+    }
+
+    .social_media .share_icon {
+        display: none;
+    }
+
+    .social_media.show {
+        display: flex;
+    }
+}
+
+.attribution {
+    font-size: 11px;
+    text-align: center;
+}
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
+    text-decoration: none;
+}
